@@ -6,6 +6,9 @@
  *   until finding right place.
  * @array: array to sort in ascending order
  * @size: array size used to know when to stop.
+ *
+ * Additional notes
+ * - You're expected to print the array WHENEVER A SWAP OCCURS
  */
 void bubble_sort(int *array, size_t size)
 {
@@ -32,8 +35,8 @@ void bubble_sort(int *array, size_t size)
 				array[i + 1] = array[i];
 				array[i] = swap_placeholder;
 				swaps_done++;
+				print_array(array, size);
 			}
 		}
-		print_array(array, size);
 	} while (swaps_done != 0);
 }
