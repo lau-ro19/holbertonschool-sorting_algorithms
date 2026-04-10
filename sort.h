@@ -32,5 +32,5 @@ void insertion_sort_list(listint_t **list);
 /* SortAlgs - Exo 02 - 2-selection_sort.c  */
 void selection_sort(int *array, size_t size);
 /* SortAlgs - Exo 03 - 3-quick_sort.c  */
-
+void quick_sort(int *array, size_t size);
 #endif
