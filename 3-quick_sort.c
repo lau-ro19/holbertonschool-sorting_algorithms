@@ -9,10 +9,11 @@
  * @array: part of the tree to sort
  * @start: beginning point of tree
  * @size:  size of the subsection of the full array
+ * @total_size: size of the full array (for print_array)
  */
 void sort_subtree(int *array, int start, int size, size_t total_size)
 {
-	size_t idx_pivot;
+	int idx_pivot;
 	int temp;
 	int i;
 	int j;
@@ -21,16 +22,12 @@ void sort_subtree(int *array, int start, int size, size_t total_size)
 	if (!array || size < 2)
 		return;
 
-	/* Define the number used to separate in "lower than" and "higher than". */
-	/* We pick the "last of array" by choice. */
 	end = start + size - 1;
 	idx_pivot = end;
 	i = start - 1;
 
 	for (j = start; j < end; j++)
 	{
-		/* Whenever we find a lower or equal value we use swap */
-		/* to put it at the "first available space of sorted section". */
 		if (array[j] <= array[idx_pivot])
 		{
 			i++;
@@ -43,17 +40,16 @@ void sort_subtree(int *array, int start, int size, size_t total_size)
 			}
 		}
 	}
-	/* We finished parsing so we put pivot at its place.*/
-	temp = array[idx_pivot];
-	array[idx_pivot] = array[i + 1];
-	array[i + 1] = temp;
-
+	if (idx_pivot  != i + 1)
+	{
+		temp = array[idx_pivot];
+		array[idx_pivot] = array[i + 1];
+		array[i + 1] = temp;
+		print_array(array, total_size);
+	}
 	idx_pivot = i + 1;
 
-	/* Recursively call on left subtree to sort */
 	sort_subtree(array, start, idx_pivot - start, total_size);
-
-	/* Recursively call on left subtree to sort */
 	sort_subtree(array, idx_pivot + 1, end - idx_pivot, total_size);
 }
 
@@ -67,4 +63,3 @@ void quick_sort(int *array, size_t size)
 {
 	sort_subtree(array, 0, (int)size, size);
 }
-
