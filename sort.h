@@ -28,7 +28,7 @@ void print_list(const listint_t *list);
 /* SortAlgs - Exo 00 - 0-bubble_sort.c  */
 void bubble_sort(int *array, size_t size);
 /* SortAlgs - Exo 01 - 1-insertion_sort_list.c  */
-
+void insertion_sort_list(listint_t **list);
 /* SortAlgs - Exo 02 - 2-selection_sort.c  */
 
 /* SortAlgs - Exo 03 - 3-quick_sort.c  */
